@@ -1,2 +1,3 @@
-# myvimrc
-Stores vimrc for future references
+## myvimrc
+Stores my .vimrc configuration, for reference purposes.
+
