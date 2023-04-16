@@ -11,7 +11,7 @@ Plugin 'preservim/nerdtree'
 Plugin 'samoshkin/vim-mergetool'
 Plugin 'nvie/vim-flake8'
 Plugin 'ambv/black'
-" Plugin 'davidhalter/jedi-vim'
+Plugin 'davidhalter/jedi-vim'
 " all plugins must be added before this line
 call vundle#end() " required
 filetype plugin indent on " required
@@ -19,6 +19,8 @@ filetype plugin indent on " required
 "filetype plugin on
 "
 " all other configuration from this line
+let g:jedi#use_tabs_not_buffers = 1
+let g:jedi#use_splits_not_buffers = "left"
 syntax enable " enable highlight
 set number " set number
 " set relativenumber " show relative number
