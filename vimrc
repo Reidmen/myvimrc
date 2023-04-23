@@ -12,6 +12,8 @@ Plugin 'samoshkin/vim-mergetool'
 Plugin 'nvie/vim-flake8'
 Plugin 'ambv/black'
 Plugin 'davidhalter/jedi-vim'
+Plugin 'ryanoasis/vim-devicons'
+Plugin 'sonph/onehalf', { 'rtp': 'vim' }
 " all plugins must be added before this line
 call vundle#end() " required
 filetype plugin indent on " required
@@ -19,11 +21,15 @@ filetype plugin indent on " required
 "filetype plugin on
 "
 " all other configuration from this line
+syntax enable " enable highlight
+colorscheme onehalfdark
+
 let g:jedi#use_tabs_not_buffers = 1
 let g:jedi#use_splits_not_buffers = "left"
-syntax enable " enable highlight
+let g:airline_theme='onehalfdark'
+
+set t_Co=256 " 256 colors
 set number " set number
-" set relativenumber " show relative number
 set laststatus=2 " works with set title
 set title " set file title
 set ts=4 " set tabs to 4 spaces
@@ -38,4 +44,5 @@ set hlsearch " highlighting search
 set foldmethod=indent " syntax folding
 set foldnestmax=10
 set nowrap " do not wrap lines
-let python_highlight_all=1 " enable python features
+set encoding=UTF-8
+" let python_highlight_all=1 " enable python features
