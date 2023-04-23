@@ -8,7 +8,7 @@ Plugin 'VundleVim/Vundle.vim'
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
 Plugin 'preservim/nerdtree'
-Plugin 'samoshkin/vim-mergetool'
+Plugin 'tpope/vim-fugitive'
 Plugin 'nvie/vim-flake8'
 Plugin 'ambv/black'
 Plugin 'davidhalter/jedi-vim'
@@ -27,6 +27,7 @@ colorscheme onehalfdark
 let g:jedi#use_tabs_not_buffers = 1
 let g:jedi#use_splits_not_buffers = "left"
 let g:airline_theme='onehalfdark'
+let g:airline#extensions#tabline#formatter = 'default'
 
 set t_Co=256 " 256 colors
 set number " set number
