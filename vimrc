@@ -24,6 +24,20 @@ filetype plugin indent on " required
 syntax enable " enable highlight
 colorscheme onehalfdark
 
+if !exists('g:airline_symbols')
+    let g:airline_symbols = {}
+endif
+
+let g:airline_symbols.maxlinenr = '☰'
+let g:airline_symbols.linenr = '¶'
+let g:airline_symbols.paste = 'ρ'
+let g:airline_symbols.spell = 'Ꞩ'
+let g:airline_symbols.notexists = '∄'
+let g:airline_symbols.whitespace = 'Ξ'
+let g:airline_symbols.crypt = '🔒'
+let g:airline_symbols.colnr = ' ℅'
+
+
 let g:jedi#use_tabs_not_buffers = 1
 let g:jedi#use_splits_not_buffers = "left"
 let g:airline_theme='onehalfdark'
