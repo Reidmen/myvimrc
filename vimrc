@@ -14,6 +14,8 @@ Plugin 'ambv/black'
 Plugin 'davidhalter/jedi-vim'
 Plugin 'ryanoasis/vim-devicons'
 Plugin 'sonph/onehalf', { 'rtp': 'vim' }
+Plugin 'cespare/vim-toml'
+" Plugin 'rust-lang/rust.vim'
 " all plugins must be added before this line
 call vundle#end() " required
 filetype plugin indent on " required
@@ -23,6 +25,16 @@ filetype plugin indent on " required
 " all other configuration from this line
 syntax enable " enable highlight
 colorscheme onehalfdark
+let g:lightline = {
+      \ 'colorscheme': 'onehalfdark',
+      \ 'active': {
+      \   'left': [ [ 'mode', 'paste' ],
+      \             [ 'gitbranch', 'readonly', 'filename', 'modified' ] ]
+      \ },
+      \ 'component_function': {
+      \   'gitbranch': 'FugitiveHead'
+      \ },
+      \ }
 
 if !exists('g:airline_symbols')
     let g:airline_symbols = {}
@@ -36,7 +48,6 @@ let g:airline_symbols.notexists = '∄'
 let g:airline_symbols.whitespace = 'Ξ'
 let g:airline_symbols.crypt = '🔒'
 let g:airline_symbols.colnr = ' ℅'
-
 
 let g:jedi#use_tabs_not_buffers = 1
 let g:jedi#use_splits_not_buffers = "left"
@@ -60,4 +71,3 @@ set foldmethod=indent " syntax folding
 set foldnestmax=10
 set nowrap " do not wrap lines
 set encoding=UTF-8
-" let python_highlight_all=1 " enable python features
