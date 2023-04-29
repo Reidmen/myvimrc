@@ -11,11 +11,11 @@ Plugin 'preservim/nerdtree'
 Plugin 'tpope/vim-fugitive'
 Plugin 'nvie/vim-flake8'
 Plugin 'ambv/black'
-Plugin 'davidhalter/jedi-vim'
+Plugin 'dense-analysis/ale'
 Plugin 'ryanoasis/vim-devicons'
 Plugin 'sonph/onehalf', { 'rtp': 'vim' }
 Plugin 'cespare/vim-toml'
-" Plugin 'rust-lang/rust.vim'
+Plugin 'rust-lang/rust.vim'
 " all plugins must be added before this line
 call vundle#end() " required
 filetype plugin indent on " required
@@ -25,6 +25,17 @@ filetype plugin indent on " required
 " all other configuration from this line
 syntax enable " enable highlight
 colorscheme onehalfdark
+
+" ALE Rust and Python
+let g:ale_linters = {
+    \ 'rust': ['analyzer', 'rls'],
+    \ 'python': ['pylint', 'flake8'],
+    \}
+let g:ale_completion_enabled = 1
+let g:airline#extensions#ale#enabled = 0
+
+let python_highlight_all = 1 "enable all highlighting
+
 let g:lightline = {
       \ 'colorscheme': 'onehalfdark',
       \ 'active': {
