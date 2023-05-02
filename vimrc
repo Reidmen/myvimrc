@@ -11,7 +11,7 @@ Plugin 'preservim/nerdtree'
 Plugin 'tpope/vim-fugitive'
 Plugin 'nvie/vim-flake8'
 Plugin 'ambv/black'
-Plugin 'dense-analysis/ale'
+Plugin 'neoclide/coc.nvim', {'branch': 'release'}
 Plugin 'ryanoasis/vim-devicons'
 Plugin 'sonph/onehalf', { 'rtp': 'vim' }
 Plugin 'cespare/vim-toml'
@@ -25,16 +25,6 @@ filetype plugin indent on " required
 " all other configuration from this line
 syntax enable " enable highlight
 colorscheme onehalfdark
-
-" ALE Rust and Python
-let g:ale_linters = {
-    \ 'rust': ['analyzer', 'rls'],
-    \ 'python': ['pylint', 'flake8'],
-    \}
-let g:ale_completion_enabled = 1
-let g:airline#extensions#ale#enabled = 0
-
-let python_highlight_all = 1 "enable all highlighting
 
 let g:lightline = {
       \ 'colorscheme': 'onehalfdark',
@@ -58,7 +48,7 @@ let g:airline_symbols.spell = 'Ꞩ'
 let g:airline_symbols.notexists = '∄'
 let g:airline_symbols.whitespace = 'Ξ'
 let g:airline_symbols.crypt = '🔒'
-let g:airline_symbols.colnr = ' ℅'
+let g:airline_symbols.colnr = '℅'
 
 let g:jedi#use_tabs_not_buffers = 1
 let g:jedi#use_splits_not_buffers = "left"
@@ -82,3 +72,18 @@ set foldmethod=indent " syntax folding
 set foldnestmax=10
 set nowrap " do not wrap lines
 set encoding=UTF-8
+set nobackup
+set nowritebackup
+
+" NOTE: Use command ':verbose imap <tab>' to make sure tab is not mapped by
+" other plugin before putting this into your config
+inoremap <silent><expr> <TAB>
+      \ coc#pum#visible() ? coc#pum#next(1) :
+      \ CheckBackspace() ? "\<Tab>" :
+      \ coc#refresh()
+inoremap <expr><S-TAB> coc#pum#visible() ? coc#pum#prev(1) : "\<C-h>"
+
+" Make <CR> to accept selected completion item or notify coc.nvim to format
+" <C-g>u breaks current undo, please make your own choice
+inoremap <silent><expr> <CR> coc#pum#visible() ? coc#pum#confirm()
+                              \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
