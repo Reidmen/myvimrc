@@ -29,13 +29,24 @@ let g:lightline = {
       \ 'colorscheme': 'onehalfdark',
       \ 'active': {
       \   'left': [ [ 'mode', 'paste' ],
-      \             [ 'gitbranch', 'readonly', 'filename', 'modified' ] ],
-      \   'right': [ [ 'lineinfo' ], ['percent'] ]
+      \             [ 'gitbranch', 'filetype', 'filename', 'readonly', 'modified' ] ],
+      \   'right': [ [ 'fileformat'], ['lineinfo', 'percent'] ]
       \ },
       \ 'component_function': {
-      \   'gitbranch': 'FugitiveHead'
+      \   'gitbranch': 'FugitiveHead',
+      \   'filetype': 'MyFileType',
+      \   'fileformat': 'MyFileFormat',
       \ },
       \ }
+
+
+function! MyFileType()
+    return winwidth(0) > 70 ? (strlen(&filetype) ? &filetype . ' ' . WebDevIconsGetFileTypeSymbol(): 'no ft'): ''
+endfunction
+
+function! MyFileFormat()
+    return winwidth(0) > 70 ? (&fileformat . ' ' . WebDevIconsGetFileFormatSymbol()) : ''
+endfunction
 
 set t_Co=256 " 256 colors
 set number " set number
