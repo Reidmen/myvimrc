@@ -48,6 +48,11 @@ function! MyFileFormat()
     return winwidth(0) > 70 ? (&fileformat . ' ' . WebDevIconsGetFileFormatSymbol()) : ''
 endfunction
 
+" Use K to show documentation in preview window
+nnoremap <silent> K :call ShowDocumentation()<CR>
+
+set signcolumn=yes " always shown signcolumn
+set updatetime=500 " updateime of 500ms
 set t_Co=256 " 256 colors
 set number " set number
 set laststatus=2 " works with set title
