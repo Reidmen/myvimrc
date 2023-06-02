@@ -15,6 +15,8 @@ Plugin 'ryanoasis/vim-devicons'
 Plugin 'sonph/onehalf', { 'rtp': 'vim' }
 Plugin 'cespare/vim-toml'
 Plugin 'rust-lang/rust.vim'
+Plugin 'bfrg/vim-cpp-modern'
+Plugin 'vim-python/python-syntax'
 " all plugins must be added before this line
 call vundle#end() " required
 filetype plugin indent on " required
@@ -24,6 +26,8 @@ filetype plugin indent on " required
 " all other configuration from this line
 syntax enable " enable highlight
 colorscheme onehalfdark
+
+let g:python_highlight_all = 1
 
 let g:lightline = {
       \ 'colorscheme': 'onehalfdark',
@@ -48,9 +52,7 @@ function! MyFileFormat()
     return winwidth(0) > 70 ? (&fileformat . ' ' . WebDevIconsGetFileFormatSymbol()) : ''
 endfunction
 
-" Use K to show documentation in preview window
-nnoremap <silent> K :call ShowDocumentation()<CR>
-
+set mouse=a
 set signcolumn=yes " always shown signcolumn
 set updatetime=500 " updateime of 500ms
 set t_Co=256 " 256 colors
@@ -73,14 +75,8 @@ set encoding=utf-8
 set nobackup
 set nowritebackup
 
-" NOTE: Use command ':verbose imap <tab>' to make sure tab is not mapped by
-" other plugin before putting this into your config
-inoremap <silent><expr> <TAB>
-      \ coc#pum#visible() ? coc#pum#next(1) :
-      \ CheckBackspace() ? "\<Tab>" :
-      \ coc#refresh()
-inoremap <expr><S-TAB> coc#pum#visible() ? coc#pum#prev(1) : "\<C-h>"
-
+" Use <c-space> to trigger completion
+inoremap <silent><expr> <c-@> coc#refresh()
 " Make <CR> to accept selected completion item or notify coc.nvim to format
 " <C-g>u breaks current undo, please make your own choice
 inoremap <silent><expr> <CR> coc#pum#visible() ? coc#pum#confirm()
