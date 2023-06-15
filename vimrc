@@ -28,6 +28,7 @@ syntax enable " enable highlight
 colorscheme onehalfdark
 
 let g:python_highlight_all = 1
+let g:black_linelength = 79 " PEP8
 
 let g:lightline = {
       \ 'colorscheme': 'onehalfdark',
