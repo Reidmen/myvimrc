@@ -17,6 +17,7 @@ Plugin 'cespare/vim-toml'
 Plugin 'rust-lang/rust.vim'
 Plugin 'bfrg/vim-cpp-modern'
 Plugin 'vim-python/python-syntax'
+Plugin 'rhysd/vim-clang-format'
 " all plugins must be added before this line
 call vundle#end() " required
 filetype plugin indent on " required
