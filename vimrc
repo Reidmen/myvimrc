@@ -77,6 +77,12 @@ set encoding=utf-8
 set nobackup
 set nowritebackup
 
+if exists('+termguicolors')
+  let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
+  let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
+  set termguicolors
+endif
+
 " Use <c-space> to trigger completion
 inoremap <silent><expr> <c-@> coc#refresh()
 " Make <CR> to accept selected completion item or notify coc.nvim to format
