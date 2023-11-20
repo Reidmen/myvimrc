@@ -110,3 +110,9 @@ inoremap <silent><expr> <c-@> coc#refresh()
 " <C-g>u breaks current undo, please make your own choice
 inoremap <silent><expr> <CR> coc#pum#visible() ? coc#pum#confirm()
                               \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
+
+nnoremap <silent> <leader>ff :Files<CR>
+nnoremap <silent> <leader><space> :GFiles<CR>
+nnoremap <silent> <leader>cm :Commits<CR>
+nnoremap <silent> <leader>ft :Filetypes<CR>
+nnoremap <silent> <leader>nt :NERDTree<CR>
