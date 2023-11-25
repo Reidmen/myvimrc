@@ -30,6 +30,7 @@ syntax enable " enable highlight
 colorscheme onehalfdark
 
 let mapleader=" "
+let maplocalleader=" "
 " fzf needs bat to work properly
 let g:fzf_vim={}
 let g:fzf_history_dir = '~/.local/share/fzf-history'
@@ -49,7 +50,7 @@ let g:fzf_colors =
   \ 'marker':  ['fg', 'Keyword'],
   \ 'spinner': ['fg', 'Label'],
   \ 'header':  ['fg', 'Comment'] }
- 
+
 let g:python_highlight_all = 1
 let g:black_linelength = 79 " PEP8
 
@@ -76,6 +77,7 @@ function! MyFileFormat()
 endfunction
 
 set mouse=a
+set ttymouse=sgr
 set signcolumn=yes " always shown signcolumn
 set updatetime=500 " updateime of 500ms
 set t_Co=256 " 256 colors
@@ -116,3 +118,10 @@ nnoremap <silent> <leader><space> :GFiles<CR>
 nnoremap <silent> <leader>cm :Commits<CR>
 nnoremap <silent> <leader>ft :Filetypes<CR>
 nnoremap <silent> <leader>nt :NERDTree<CR>
+
+" automatically close brackets and parenthesis and place cursor inside
+inoremap " ""<left>
+inoremap ' ''<left>
+inoremap ( ()<left>
+inoremap [ []<left>
+inoremap { {}<left>
