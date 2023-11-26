@@ -54,6 +54,10 @@ let g:fzf_colors =
 let g:python_highlight_all = 1
 let g:black_linelength = 79 " PEP8
 
+let g:clang_format#auto_format=1 " enable autoformatting on buffer write
+let g:clang_format#detect_style_file=1 " detect and load .clang-format file automatically
+let g:clang_format#auto_format_on_insert_leave=1
+
 let g:lightline = {
       \ 'colorscheme': 'onehalfdark',
       \ 'active': {
@@ -114,7 +118,7 @@ inoremap <silent><expr> <CR> coc#pum#visible() ? coc#pum#confirm()
                               \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
 
 nnoremap <silent> <leader>ff :Files<CR>
-nnoremap <silent> <leader><space> :GFiles<CR>
+nnoremap <silent> <leader>fg :GFiles<CR>
 nnoremap <silent> <leader>cm :Commits<CR>
 nnoremap <silent> <leader>ft :Filetypes<CR>
 nnoremap <silent> <leader>nt :NERDTree<CR>
