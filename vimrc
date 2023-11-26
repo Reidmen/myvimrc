@@ -12,7 +12,7 @@ Plugin 'nvie/vim-flake8'
 Plugin 'ambv/black'
 Plugin 'neoclide/coc.nvim', {'branch': 'release'}
 Plugin 'ryanoasis/vim-devicons'
-Plugin 'sonph/onehalf', { 'rtp': 'vim' }
+Plugin 'joshdick/onedark.vim' 
 Plugin 'cespare/vim-toml'
 Plugin 'bfrg/vim-cpp-modern'
 Plugin 'vim-python/python-syntax'
@@ -27,7 +27,7 @@ filetype plugin indent on " required
 "
 " all other configuration from this line
 syntax enable " enable highlight
-colorscheme onehalfdark
+colorscheme onedark
 
 let mapleader=" "
 let maplocalleader=" "
@@ -59,16 +59,17 @@ let g:clang_format#detect_style_file=1 " detect and load .clang-format file auto
 let g:clang_format#auto_format_on_insert_leave=1
 
 let g:lightline = {
-      \ 'colorscheme': 'onehalfdark',
+      \ 'colorscheme': 'onedark',
       \ 'active': {
       \   'left': [ [ 'mode', 'paste' ],
-      \             [ 'gitbranch', 'filetype', 'filename', 'readonly', 'modified' ] ],
+      \             [ 'gitbranch', 'filetype', 'filename', 'cocstatus', 'readonly', 'modified' ] ],
       \   'right': [ [ 'fileformat'], ['lineinfo', 'percent'] ]
       \ },
       \ 'component_function': {
       \   'gitbranch': 'FugitiveHead',
       \   'filetype': 'MyFileType',
       \   'fileformat': 'MyFileFormat',
+      \   'cocstatus': 'coc#status',
       \ },
       \ }
 
