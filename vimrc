@@ -14,9 +14,11 @@ Plugin 'neoclide/coc.nvim', {'branch': 'release'}
 Plugin 'ryanoasis/vim-devicons'
 Plugin 'joshdick/onedark.vim' 
 Plugin 'cespare/vim-toml'
-Plugin 'bfrg/vim-cpp-modern'
 Plugin 'vim-python/python-syntax'
+Plugin 'bfrg/vim-cpp-modern'
 Plugin 'rhysd/vim-clang-format'
+Plugin 'rust-lang/rust.vim'
+
 Plugin 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plugin 'junegunn/fzf.vim'
 " all plugins must be added before this line
@@ -31,6 +33,7 @@ colorscheme onedark
 
 let mapleader=" "
 let maplocalleader=" "
+
 " fzf needs bat to work properly
 let g:fzf_vim={}
 let g:fzf_history_dir = '~/.local/share/fzf-history'
@@ -54,15 +57,18 @@ let g:fzf_colors =
 let g:python_highlight_all = 1
 let g:black_linelength = 79 " PEP8
 
+let g:rustfmt_autosave = 1
+
 let g:clang_format#auto_format=1 " enable autoformatting on buffer write
 let g:clang_format#detect_style_file=1 " detect and load .clang-format file automatically
 let g:clang_format#auto_format_on_insert_leave=1
 
 let g:lightline = {
       \ 'colorscheme': 'onedark',
+      \ 'background': 'dark',
       \ 'active': {
-      \   'left': [ [ 'mode', 'paste' ],
-      \             [ 'gitbranch', 'filetype', 'filename', 'cocstatus', 'readonly', 'modified' ] ],
+      \   'left': [ [ 'mode', 'paste' ], [ 'filetype' ],
+      \             [ 'filename','gitbranch', 'cocstatus', 'currentfunction', 'readonly', 'modified' ] ],
       \   'right': [ [ 'fileformat'], ['lineinfo', 'percent'] ]
       \ },
       \ 'component_function': {
@@ -70,6 +76,7 @@ let g:lightline = {
       \   'filetype': 'MyFileType',
       \   'fileformat': 'MyFileFormat',
       \   'cocstatus': 'coc#status',
+      \   'currentfunction': 'CocCurrentFunction', 
       \ },
       \ }
 
@@ -79,6 +86,10 @@ endfunction
 
 function! MyFileFormat()
     return winwidth(0) > 70 ? (&fileformat . ' ' . WebDevIconsGetFileFormatSymbol()) : ''
+endfunction
+
+function! CocCurrentFunction()
+    return get(b:, 'coc_current_function', '')
 endfunction
 
 set mouse=a
@@ -125,8 +136,6 @@ nnoremap <silent> <leader>ft :Filetypes<CR>
 nnoremap <silent> <leader>nt :NERDTree<CR>
 
 " automatically close brackets and parenthesis and place cursor inside
-inoremap " ""<left>
-inoremap ' ''<left>
 inoremap ( ()<left>
 inoremap [ []<left>
 inoremap { {}<left>
