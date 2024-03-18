@@ -135,6 +135,9 @@ nnoremap <silent> <leader>cm :Commits<CR>
 nnoremap <silent> <leader>ft :Filetypes<CR>
 nnoremap <silent> <leader>nt :NERDTree<CR>
 
+nnoremap <silent> vv :vsplit<CR>
+nnoremap <silent> hs :split<CR>
+
 " automatically close brackets and parenthesis and place cursor inside
 inoremap ( ()<left>
 inoremap [ []<left>
