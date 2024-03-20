@@ -18,6 +18,7 @@ Plugin 'vim-python/python-syntax'
 Plugin 'bfrg/vim-cpp-modern'
 Plugin 'rhysd/vim-clang-format'
 Plugin 'rust-lang/rust.vim'
+Plugin 'tpope/vim-commentary'
 
 Plugin 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plugin 'junegunn/fzf.vim'
@@ -137,6 +138,11 @@ nnoremap <silent> <leader>nt :NERDTree<CR>
 
 nnoremap <silent> vv :vsplit<CR>
 nnoremap <silent> hs :split<CR>
+
+nnoremap gh <C-W><C-H>
+nnoremap gj <C-W><C-J>
+nnoremap gk <C-W><C-K>
+nnoremap gl <C-W><C-L>
 
 " automatically close brackets and parenthesis and place cursor inside
 inoremap ( ()<left>
