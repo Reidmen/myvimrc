@@ -35,7 +35,7 @@ let maplocalleader=" "
 
 let g:onedark_color_overrides = {
 \ "purple": { "gui": "#e387ff", "cterm": "170", "cterm16": "5" },
-\ "green": { "gui": "#c0fa96", "cterm": "114", "cterm16": "2" },
+\ "green": { "gui": "#8bcd5b", "cterm": "114", "cterm16": "2" },
 \ "blue": { "gui": "#6ebeff", "cterm": "39", "cterm16": "4" },
 \ "red": { "gui": "#ff6e7a", "cterm": "204", "cterm16": "1" },
 \ "dark_red": { "gui": "#BE5046", "cterm": "196", "cterm16": "9" },
@@ -49,6 +49,7 @@ let g:onedark_color_overrides = {
 \ "menu_grey": { "gui": "#3E4452", "cterm": "237", "cterm16": "8" },
 \ "special_grey":  { "gui": "#3B4048", "cterm": "238", "cterm16": "15" },
 \ "vertsplit": { "gui": "#181A1F", "cterm": "59", "cterm16": "15" },
+\ "background": { "gui": "#26282e", "cterm": "235", "cterm16": "NONE" },
 \}
 colorscheme onedark
 
@@ -115,7 +116,8 @@ set ttymouse=sgr
 set signcolumn=yes " always shown signcolumn
 set updatetime=500 " updateime of 500ms
 set t_Co=256 " 256 colors
-set number " set number
+"" set number " set number
+set relativenumber
 set laststatus=2 " works with set title
 set title " set file title
 set ts=4 " set tabs to 4 spaces
