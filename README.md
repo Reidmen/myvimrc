@@ -1,15 +1,17 @@
-## myvimrc and tmux
+# Dotfiles 
 
-Stores my .vimrc configuration, and tmux for reference purposes.
+Personal dotfiles for backup purposes for git, vim and neovim.
+Includes `.vimrc` configuration, `init.lua` config., `tmux.conf` and `gitconfig`.
 They require [Nerd Font](https://www.nerdfonts.com/) to execute properly.
 
 
-# Fetch vimrc (stable vim)
+## Fetch vimrc (stable vim)
+```bash
+cd $HOME
+cp vimrc .vimrc
 ```
 
-```
-
-# Fetch from another machine (nvim)
+## Fetch from another machine (nvim)
 ```bash
 mkdir -p ~/.config
 git clone origin https://github.com/Reidmen/myvimrc.git  ~/.config/
