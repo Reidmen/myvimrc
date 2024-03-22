@@ -37,7 +37,7 @@ let g:onedark_color_overrides = {
 \ "purple": { "gui": "#e387ff", "cterm": "170", "cterm16": "5" },
 \ "green": { "gui": "#8bcd5b", "cterm": "114", "cterm16": "2" },
 \ "blue": { "gui": "#6ebeff", "cterm": "39", "cterm16": "4" },
-\ "red": { "gui": "#ff6e7a", "cterm": "204", "cterm16": "1" },
+\ "red": { "gui": "#ef596f", "cterm": "204", "cterm16": "1" },
 \ "dark_red": { "gui": "#BE5046", "cterm": "196", "cterm16": "9" },
 \ "yellow": { "gui": "#ffd587", "cterm": "180", "cterm16": "3" },
 \ "dark_yellow": { "gui": "#D19A66", "cterm": "173", "cterm16": "11" },
@@ -157,6 +157,9 @@ nnoremap <silent> <leader>nt :NERDTree<CR>
 
 nnoremap <silent> vv :vsplit<CR>
 nnoremap <silent> hs :split<CR>
+nnoremap <silent> te :tabedit<CR>
+nnoremap <silent> tn :tabNext<CR>
+nnoremap <silent> tc :tabclose<CR>
 
 nnoremap gh <C-W><C-H>
 nnoremap gj <C-W><C-J>
