@@ -73,6 +73,11 @@ let g:fzf_colors =
   \ 'spinner': ['fg', 'Label'],
   \ 'header':  ['fg', 'Comment'] }
 
+let g:fzf_action = {
+  \ 'ctrl-t': 'tab split',
+  \ 'ctrl-h': 'split',
+  \ 'ctrl-v': 'vsplit' }
+
 let g:python_highlight_all = 1
 let g:black_linelength = 79 " PEP8
 
