@@ -32,5 +32,20 @@ git clone origin https://github.com/Reidmen/myvimrc.git  ~/.config/
   },
 ```
 
+## Requirements for using the `init.lua`
+For `init.lua` to be installed properly, some dependencies must be installed.
+To install `Unzip` and `clang`, run the following command:
+```bash
+# Unzip and clang compiler
+sudo apt install unzip clang
+```
 
+For LSP, `node` and `npm` are required, run the following command install them:
 
+```bash
+# nodejs  and npm
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.7/install.sh | bash
+nvm install 20
+node -v # should print `v20.13.0`
+npm -v # should print `10.5.2`
+```
