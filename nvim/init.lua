@@ -10,7 +10,6 @@ vim.opt.shiftwidth = 4
 vim.opt.tabstop = 4
 vim.opt.mouse = "a" -- enable mouse
 vim.opt.showmode = false -- don't shown mode, already in status line
-vim.opt.clipboard = "unnamedplus" -- Sync clipboard between OS and Neovim
 vim.opt.breakindent = true
 vim.opt.undofile = false
 vim.opt.ignorecase = true -- ignore case-sensitive unless \C or capital letters
@@ -63,26 +62,47 @@ vim.api.nvim_create_autocmd("TextYankPost", {
   end,
 })
 
--- [[ Install `lazy.nvim` plugin manager ]]
+-- [[ `lazy.nvim` plugin manager ]]
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not vim.loop.fs_stat(lazypath) then
   local lazyrepo = "https://github.com/folke/lazy.nvim.git"
   vim.fn.system({ "git", "clone", "--filter=blob:none", "--branch=stable", lazyrepo, lazypath })
 end ---@diagnostic disable-next-line: undefined-field
 vim.opt.rtp:prepend(lazypath)
--- [[ Configure and install plugins ]]
+
+local lazy_options = {
+  cache = {
+    enabled = true,
+  },
+  reset_packpath = true,
+  rtp = {
+    reset = true,
+    disabled_plugins = {
+      "gzip",
+      "matchit",
+      "matchparen",
+      "netrwPlugin",
+      "tarPlugin",
+      "tohtml",
+      "tutor",
+      "zipPlugin",
+    },
+  },
+}
+
 require("lazy").setup({
   require("theme"),
   require("treesitter"),
   "tpope/vim-sleuth",
   { "numToStr/Comment.nvim", opts = {} },
+  { "j-hui/fidget.nvim", opts = {} },
   { "nvim-tree/nvim-tree.lua", opts = {} },
   require("signs"),
-  { "nvim-tree/nvim-web-devicons", enabled = vim.g.have_nerd_font },
+  { "nvim-tree/nvim-web-devicons", enabled = vim.g.have_nerd_font, lazy = true },
   require("finder"),
   require("completion"),
   require("lsp"),
   require("formatter"),
   require("mini-plugins"),
   require("mojo-lang"),
-}, { ui = { icons = vim.g.have_nerd_font } })
+}, lazy_options)
