@@ -167,7 +167,6 @@ require("lazy").setup({
         builtin.find_files({ cwd = vim.fn.stdpath("config") })
       end, { desc = "[S]earch [N]eovim files" })
     end,
-    lazy = true,
   },
   { -- Autocompletion
     "hrsh7th/nvim-cmp",
