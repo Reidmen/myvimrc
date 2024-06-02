@@ -11,7 +11,7 @@ return { -- Autoformat
     end,
     formatters_by_ft = {
       lua = { "stylua" },
-      python = { "ruff_format" }, -- isort, black
+      python = { "ruff_format" },
     },
   },
 }

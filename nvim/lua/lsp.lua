@@ -54,7 +54,9 @@ return { -- LSP Configuration & Plugins
         settings = {
           Lua = {
             diagnostics = { globals = { "vim" } },
-            completion = { callSnippet = "Replace" },
+            workspace = { library = { vim.env.VIMRUNTIME } },
+            telemetry = { enable = false },
+            -- completion = { callSnippet = "Replace" },
           },
         },
       },
@@ -69,10 +71,9 @@ return { -- LSP Configuration & Plugins
         },
       },
     })
-    local ensure_installed = vim.tbl_keys(servers or {})
+    local ensure_installed = vim.tbl_keys(servers)
     vim.list_extend(ensure_installed, {
       "stylua",
-      -- "black",
     })
     require("mason-tool-installer").setup({ ensure_installed = ensure_installed })
 
