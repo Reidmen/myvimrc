@@ -93,9 +93,9 @@ local lazy_options = {
 require("lazy").setup({
   require("theme"),
   require("treesitter"),
+  { "j-hui/fidget.nvim", opts = {} },
   "tpope/vim-sleuth",
   { "numToStr/Comment.nvim", opts = {} },
-  { "j-hui/fidget.nvim", opts = {} },
   { "nvim-tree/nvim-tree.lua", opts = {} },
   require("signs"),
   { "nvim-tree/nvim-web-devicons", enabled = vim.g.have_nerd_font, lazy = true },

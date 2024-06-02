@@ -10,8 +10,8 @@ return {
       additional_vim_regex_highlighting = false,
     },
   },
-  config = function(_, options)
+  config = function(_, opts)
     -- [[ Configure Treesitter ]] See `:help nvim-treesitter`
-    require("nvim-treesitter.configs").setup(options)
+    require("nvim-treesitter.configs").setup(opts)
   end,
 }

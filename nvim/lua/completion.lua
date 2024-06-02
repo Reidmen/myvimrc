@@ -1,9 +1,10 @@
 return { -- Autocompletion
   "hrsh7th/nvim-cmp",
   dependencies = {
+    "saadparwaiz1/cmp_luasnip",
     "hrsh7th/cmp-nvim-lsp",
     "hrsh7th/cmp-path",
-    "L3M0N4D3/LuaSnip",
+    "L3MON4D3/LuaSnip",
   },
   config = function()
     -- See `:help cmp`
@@ -22,7 +23,6 @@ return { -- Autocompletion
         ["<leader>n"] = cmp.mapping.select_next_item(),
         ["<leader>p"] = cmp.mapping.select_prev_item(),
         ["<cr>"] = cmp.mapping.confirm({ select = true }),
-        -- ["<C-Space>"] = cmp.mapping.complete({}),
       }),
       sources = {
         { name = "nvim_lsp" },

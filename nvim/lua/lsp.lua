@@ -46,6 +46,7 @@ return { -- LSP Configuration & Plugins
       -- See `:help lspconfig-all` for a list of all the pre-configured LSPs
       clangd = {},
       pyright = {},
+      rust_analyzer = {},
       -- ruff_lsp = {
       --   settings = { format = { args = { "--line-length", "79" } } },
       -- },
