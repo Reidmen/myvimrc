@@ -3,7 +3,7 @@ return { -- Autoformat
   opts = {
     notify_on_error = true,
     format_on_save = function(bufnr)
-      local disable_filetypes = { c = true, cpp = true }
+      local disable_filetypes = { bash = true }
       return {
         timeout_ms = 500,
         lsp_fallback = not disable_filetypes[vim.bo[bufnr].filetype],
@@ -12,6 +12,7 @@ return { -- Autoformat
     formatters_by_ft = {
       lua = { "stylua" },
       python = { "ruff_format" },
+      go = { "goimports", "gofmt" },
     },
   },
 }

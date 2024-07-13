@@ -8,10 +8,10 @@ return {
     -- 'tokyonight-storm', 'tokyonight-moon', or 'tokyonight-day'.
     -- vim.cmd.colorscheme 'tokyonight-night'
     vim.cmd.colorscheme("onedark")
-    vim.cmd.hi("Comment gui=none")
+    -- vim.cmd.hi("Comment gui=none")
   end,
   config = function()
-    require("onedark").setup({ style = "darker" })
+    require("onedark").setup({ style = "deep" })
   end,
   lazy = false,
 }
