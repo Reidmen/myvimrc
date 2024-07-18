@@ -2,7 +2,6 @@
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 
--- Set to true if you have a Nerd Font installed
 vim.g.have_nerd_font = true
 vim.opt.number = true -- line number
 vim.opt.relativenumber = true -- relative number
@@ -25,9 +24,9 @@ vim.opt.inccommand = "split"
 vim.opt.cursorline = true
 vim.opt.scrolloff = 10 -- Minimal number of lines to keep above and below
 vim.opt.termguicolors = true -- true colors
+vim.opt.hlsearch = true
 
 -- [[ Basic Keymaps ]] See `:help vim.keymap.set()`
-vim.opt.hlsearch = true
 vim.keymap.set("n", "<Esc>", "<cmd>nohlsearch<cr>")
 
 -- Diagnostic keymaps
@@ -38,10 +37,13 @@ vim.keymap.set("n", "<leader>q", vim.diagnostic.setloclist, { desc = "Open diagn
 
 -- Keybinds to make split navigation easier.
 -- NOTE: See `:help wincmd` for a list of all window commands
-vim.keymap.set("n", "<leader>h", "<C-w><C-h>", { desc = "Focus to the left window" })
-vim.keymap.set("n", "<leader>l", "<C-w><C-l>", { desc = "Focus to the right window" })
-vim.keymap.set("n", "<leader>j", "<C-w><C-j>", { desc = "Focus to the lower window" })
-vim.keymap.set("n", "<leader>k", "<C-w><C-k>", { desc = "Focus to the upper window" })
+vim.keymap.set("n", "<leader>h", "<C-w><C-h>", { desc = "Focus left window" })
+vim.keymap.set("n", "<leader>l", "<C-w><C-l>", { desc = "Focus right window" })
+vim.keymap.set("n", "<leader>j", "<C-w><C-j>", { desc = "Focus lower window" })
+vim.keymap.set("n", "<leader>k", "<C-w><C-k>", { desc = "Focus upper window" })
+
+-- Tree
+vim.keymap.set("n", "<leader>e", ":NvimTreeFindFileToggle<cr>")
 
 -- Keybinds for managing splits and tabs
 local opts = { noremap = true, silent = true }
@@ -50,6 +52,8 @@ vim.keymap.set("n", "hs", ":split<Return>", opts)
 vim.keymap.set("n", "te", ":tabedit<Return>", opts)
 vim.keymap.set("n", "tn", ":tabnext<Return>", opts)
 vim.keymap.set("n", "tp", ":tabprev<Return>", opts)
+vim.keymap.set("n", "<s-tab>", ":bprev<Return>", opts)
+vim.keymap.set("n", "<tab>", ":bnext<Return>", opts)
 
 -- [[ Basic Autocommands ]]
 --  See `:help lua-guide-autocommands`
@@ -71,9 +75,7 @@ end ---@diagnostic disable-next-line: undefined-field
 vim.opt.rtp:prepend(lazypath)
 
 local lazy_options = {
-  cache = {
-    enabled = true,
-  },
+  cache = { enabled = true },
   reset_packpath = true,
   rtp = {
     reset = true,

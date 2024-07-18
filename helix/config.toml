@@ -1,0 +1,29 @@
+theme = "gruber-darker"
+
+[editor]
+# Show currently open buffers, only when more than one exists.
+bufferline = "multiple"
+# Highlight all lines with a cursor
+cursorline = true
+# Use relative line numbers
+line-number = "relative"
+# Show a ruler at column 79
+rulers = [79]
+# Force the theme to show colors
+true-color = true
+
+
+[editor.cursor-shape]
+insert = "bar"
+normal = "block"
+select = "underline"
+
+
+[editor.lsp]
+# Show LSP messages in the status line
+display-messages = true
+
+[editor.statusline]
+left = ["mode", "spinner", "version-control", "file-name"]
+
+

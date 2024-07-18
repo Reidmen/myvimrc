@@ -11,7 +11,7 @@ return {
     },
   },
   config = function(_, opts)
-    -- [[ Configure Treesitter ]] See `:help nvim-treesitter`
+    -- Configure Treesitter `:help nvim-treesitter`
     require("nvim-treesitter.configs").setup(opts)
   end,
 }
