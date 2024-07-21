@@ -16,11 +16,12 @@ return { -- Autocompletion
 
     require("luasnip.loaders.from_vscode").lazy_load()
     cmp.setup({
-      completion = { completeopt = "menu,menuone,noinsert" },
+      -- completion = { completeopt = "menu,menuone,noinsert" },
       -- `:help ins-completion`
       mapping = cmp.mapping.preset.insert({
-        ["<leader>n"] = cmp.mapping.select_next_item(),
-        ["<leader>p"] = cmp.mapping.select_prev_item(),
+        ["<C-n>"] = cmp.mapping.select_next_item(),
+        ["<C-p>"] = cmp.mapping.select_prev_item(),
+        ["<C-space>"] = cmp.mapping.complete(),
         ["<cr>"] = cmp.mapping.confirm({ select = true }),
       }),
       sources = {
