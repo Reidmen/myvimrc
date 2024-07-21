@@ -105,6 +105,6 @@ require("lazy").setup({
   require("completion"),
   require("lsp"),
   require("formatter"),
-  require("mini-plugins"),
+  require("statusbar"),
   require("mojo-lang"),
 }, lazy_options)

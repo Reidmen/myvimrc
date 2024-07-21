@@ -40,7 +40,8 @@ To install `Unzip` and `clang`, run the following command:
 sudo apt install unzip clang
 ```
 
-For LSP, `node` and `npm` are required, run the following command install them:
+### Optional
+For LSP, `node` and `npm` are required for `pyright`, run the following command install them:
 
 ```bash
 # nodejs  and npm
