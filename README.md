@@ -1,40 +1,29 @@
 # Dotfiles 
 
-Personal dotfiles for backup purposes for git, vim and neovim.
-Includes `.vimrc` configuration, `init.lua` config., `tmux.conf` and `gitconfig`.
-They require [Nerd Font](https://www.nerdfonts.com/) to execute properly.
+Dotfiles (backup) for vim, neovim, git, tmux, and helix. 
+Includes:
+* `.vimrc` configuration with classic goodies for a basic *vim/python/c++* experience. Nothing fancy, will work in any HPC.
+* `init.lua` for nvim including LSP configurations for Go, Python and C++. It includes `conform` for formatting.
+* `tmux.conf` for tmux configuration. Also, very basic, straight to the point.
+* `gitconfig` configuration for a pleasing visualization of the git history.
+
+It requires [Nerd Font](https://www.nerdfonts.com/) for the icons.
 
 
-## Fetch vimrc (stable vim)
+## Fetch for Vim (stable vim)
 ```bash
 cd $HOME
 cp vimrc .vimrc
 ```
 
-## Fetch from another machine (nvim)
+## Fetch NeoVim
 ```bash
 mkdir -p ~/.config
 git clone origin https://github.com/Reidmen/myvimrc.git  ~/.config/
 ```
 
-## LazyVim make details (lua)
-
-```lua
-{
-    "nvim-telescope/telescope-fzf-native.nvim",
-    build = "make",
-    enabled = vim.fn.executable("make") == 1,
-    config = function()
-      Util.on_load("telescope.nvim", function()
-        require("telescope").load_extension("fzf")
-      end)
-    end,
-  },
-```
-
-## Requirements for using the `init.lua`
-For `init.lua` to be installed properly, some dependencies must be installed.
-To install `Unzip` and `clang`, run the following command:
+## Requirements dotfiles for NeoVim 
+Install `Unzip` and `clang`. To do so, run the command:
 ```bash
 # Unzip and clang compiler
 sudo apt install unzip clang
