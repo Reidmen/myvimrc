@@ -23,10 +23,22 @@ git clone origin https://github.com/Reidmen/myvimrc.git  ~/.config/
 ```
 
 ## Requirements dotfiles for NeoVim 
-Install `Unzip` and `clang`. To do so, run the command:
+Install `unzip` and `clang`. To do so, run the command:
 ```bash
 # Unzip and clang compiler
-sudo apt install unzip clang
+sudo apt install unzip clang bat fzf
+```
+
+## Fuzzy finder with bat
+Install `bat` and `fzf` for a fuzzy finder. A nice alias (for your `.bash_aliases`) is provided below:
+
+```bash
+fzv() {
+  local results=$(fzf --preview 'batcat --color=always {}')
+  [ -z $results ] && return
+  echo "$results"
+  nvim "$results"
+}
 ```
 
 ### Optional
