@@ -12,7 +12,7 @@ return { -- Autoformat
     formatters_by_ft = {
       lua = { "stylua" },
       python = { "ruff_format" },
-      go = { "goimports", "gofmt" },
+      -- go = { "goimports", "gofmt" },
     },
   },
 }

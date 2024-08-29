@@ -51,12 +51,9 @@ return { -- LSP Configuration & Plugins
     local servers = {
       -- See `:help lspconfig-all` for a list of all the pre-configured LSPs
       clangd = { cmd = { "clangd", "--fallback-style=llvm" } },
-      pyright = {},
       -- rust_analyzer = {},
-      gopls = { settings = { usePlaceHolders = true } },
-      -- ruff_lsp = {
-      --   settings = { format = { args = { "--line-length", "79" } } },
-      -- },
+      -- gopls = { settings = { usePlaceHolders = true } },
+      ruff_lsp = {},
       lua_ls = {
         settings = {
           Lua = {
@@ -69,15 +66,7 @@ return { -- LSP Configuration & Plugins
       },
     }
 
-    require("mason").setup({
-      ui = {
-        icons = {
-          package_installed = "✓",
-          package_pending = "➜",
-          package_uninstalled = "✗",
-        },
-      },
-    })
+    require("mason").setup({ ui = { icons = {} } })
     local ensure_installed = vim.tbl_keys(servers)
     vim.list_extend(ensure_installed, { "stylua" })
     require("mason-tool-installer").setup({ ensure_installed = ensure_installed })

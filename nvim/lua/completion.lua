@@ -4,9 +4,7 @@ return { -- Autocompletion
   dependencies = {
     "hrsh7th/cmp-nvim-lsp",
     "hrsh7th/cmp-path",
-    "hrsh7th/cmp-buffer",
     "L3MON4D3/LuaSnip",
-    -- "saadparwaiz1/cmp_luasnip",
   },
   config = function()
     -- See `:help cmp`
@@ -16,8 +14,7 @@ return { -- Autocompletion
 
     require("luasnip.loaders.from_vscode").lazy_load()
     cmp.setup({
-      -- completion = { completeopt = "menu,menuone,noinsert" },
-      -- `:help ins-completion`
+      -- :help ins-completion
       mapping = cmp.mapping.preset.insert({
         ["<C-n>"] = cmp.mapping.select_next_item(),
         ["<C-p>"] = cmp.mapping.select_prev_item(),
@@ -27,7 +24,6 @@ return { -- Autocompletion
       sources = {
         { name = "nvim_lsp" },
         { name = "luasnip" },
-        { name = "buffer" },
         { name = "path" },
       },
       snippet = {

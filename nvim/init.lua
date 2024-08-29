@@ -2,7 +2,6 @@
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 
-vim.g.have_nerd_font = true
 vim.opt.number = true -- line number
 vim.opt.relativenumber = true -- relative number
 vim.opt.shiftwidth = 4
@@ -26,7 +25,7 @@ vim.opt.scrolloff = 10 -- Minimal number of lines to keep above and below
 vim.opt.termguicolors = true -- true colors
 vim.opt.hlsearch = true
 
--- [[ Basic Keymaps ]] See `:help vim.keymap.set()`
+-- [[ Basic Keymaps ]]
 vim.keymap.set("n", "<Esc>", "<cmd>nohlsearch<cr>")
 
 -- Diagnostic keymaps
@@ -95,12 +94,12 @@ local lazy_options = {
 require("lazy").setup({
   require("theme"),
   require("treesitter"),
+  "github/copilot.vim",
   { "j-hui/fidget.nvim", opts = {} },
   "tpope/vim-sleuth",
   { "numToStr/Comment.nvim", opts = {} },
   { "nvim-tree/nvim-tree.lua", opts = {} },
   require("signs"),
-  { "nvim-tree/nvim-web-devicons", enabled = vim.g.have_nerd_font, lazy = true },
   require("finder"),
   require("completion"),
   require("lsp"),
