@@ -1,53 +1,69 @@
-# Dotfiles 
+# Neovim workstation bootstrap
 
-Dotfiles (backup) for vim, neovim, git, tmux, and helix. 
-Includes:
-* `.vimrc` configuration with classic goodies for a basic *vim/python/c++* experience. Nothing fancy, will work in any HPC.
-* `init.lua` for nvim including LSP configurations for Go, Python and C++. It includes `conform` for formatting.
-* `tmux.conf` for tmux configuration. Also, very basic, straight to the point.
-* `gitconfig` configuration for a pleasing visualization of the git history.
+Reproducible macOS workstation state centered on Neovim. The repository keeps the
+current Lua configuration, its plugin lockfile, a legacy `vimrc`, and the
+Homebrew inventory required to rebuild the surrounding toolchain.
 
-It requires [Nerd Font](https://www.nerdfonts.com/) for the icons.
-
-
-## Fetch for Vim (stable vim)
-```bash
-cd $HOME
-cp vimrc .vimrc
-```
-
-## Fetch NeoVim
-```bash
-mkdir -p ~/.config
-git clone origin https://github.com/Reidmen/myvimrc.git  ~/.config/
-```
-
-## Requirements dotfiles for NeoVim 
-Install `unzip` and `clang`. To do so, run the command:
-```bash
-# Unzip and clang compiler
-sudo apt install unzip clang bat fzf
-```
-
-## Fuzzy finder with bat
-Install `bat` and `fzf` for a fuzzy finder. A nice alias (for your `.bash_aliases`) is provided below:
+## Bootstrap
 
 ```bash
-fzv() {
-  local results=$(fzf --preview 'batcat --color=always {}')
-  [ -z $results ] && return
-  echo "$results"
-  nvim "$results"
-}
+git clone git@github.com:Reidmen/myvimrc.git ~/.dotfiles/myvimrc
+~/.dotfiles/myvimrc/install.sh
 ```
 
-### Optional
-For LSP, `node` and `npm` are required for `pyright`, run the following command install them:
+`install.sh` is intentionally Brew-first:
+
+1. Verify macOS and install Homebrew from the upstream installer when absent.
+2. Load `brew shellenv` for the current process.
+3. Reconcile the machine against `Brewfile` with `brew bundle`.
+4. Symlink `nvim/` to `~/.config/nvim` and `vimrc` to `~/.vimrc`.
+5. Synchronize plugins from `nvim/lazy-lock.json` in headless Neovim.
+
+The installer is idempotent for links it owns. A conflicting file or directory
+is moved alongside itself to `<name>.backup.<timestamp>` before linking; it is
+never deleted.
+
+## Editing policy
+
+Zed is the preferred editor for sustained development. Neovim is the
+agent-first, low-latency surface for quickly reviewing and navigating changes
+produced by coding agents.
+
+## Repository contract
+
+| Path | Role |
+| --- | --- |
+| `Brewfile` | Declarative package inventory, grouped by operational intent. |
+| `install.sh` | Homebrew bootstrap, package reconciliation, linking, and plugin sync. |
+| `nvim/` | Live Neovim configuration copied from `~/.config/nvim`. |
+| `nvim/lazy-lock.json` | Exact plugin revisions for deterministic restores. |
+| `vimrc` | Preserved minimal Vim configuration for hosts without Neovim. |
+
+The Brewfile records six taps, 43 explicitly requested formulae, 16 casks, and
+three ecosystem-managed CLI tools. Sections distinguish editor/terminal tools,
+version control, AI agents, language runtimes, language servers, quality gates,
+data services, cloud tooling, and desktop applications. Transitive formulae are
+resolved by Homebrew and deliberately omitted.
+
+## Neovim architecture
+
+- `init.lua` loads editor options, `lazy.nvim`, and keymaps.
+- `lua/plugins/` contains single-purpose plugin specifications for navigation,
+  UI, Treesitter, Git, LSP, and the Rose Pine theme.
+- LSP uses the Neovim 0.11 native configuration and completion APIs. The
+  Brewfile supplies ElixirLS, `gopls`, `rust-analyzer`, and `zls`.
+- Treesitter installs Elixir and HEEx parsers; `lazy-lock.json` pins every plugin
+  resolved by `lazy.nvim`.
+
+## Operations
+
+Validate machine drift without changing it:
 
 ```bash
-# nodejs  and npm
-curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.7/install.sh | bash
-nvm install 20
-node -v # should print `v20.13.0`
-npm -v # should print `10.5.2`
+brew bundle check --no-upgrade --file ./Brewfile
+nvim --headless '+checkhealth' +qa
 ```
+
+After changing the local setup, refresh `nvim/` and update the relevant Brewfile
+section explicitly. Do not replace the Brewfile with an unreviewed dump: preserve
+intent grouping, tap qualification, link options, and non-Homebrew tool entries.
